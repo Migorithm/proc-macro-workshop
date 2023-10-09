@@ -52,6 +52,22 @@ pub struct Command {
     current_dir: String,
 }
 
+impl Command {
+    pub fn builder() -> CommandBuilder {
+        CommandBuilder {
+            ..Default::default()
+        }
+    }
+}
+
+#[derive(Default)]
+pub struct CommandBuilder {
+    executable: Option<String>,
+    args: Option<Vec<String>>,
+    env: Option<Vec<String>>,
+    current_dir: Option<String>,
+}
+
 fn main() {
     let builder = Command::builder();
 
